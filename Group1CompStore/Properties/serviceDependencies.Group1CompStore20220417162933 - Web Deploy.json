@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/Group1CompStoreapiasdf/apis/Group1CompStore",
+      "type": "apis.azure"
+    },
+    "mssql1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/schendelnorthwind/databases/Northwind-AZURE",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:Group1ComputerStore"
+    }
+  }
+}
