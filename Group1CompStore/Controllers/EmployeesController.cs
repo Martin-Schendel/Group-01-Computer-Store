@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Group1CompStore.Data;
 using Group1CompStore.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Group1CompStore.Controllers
 {
@@ -23,6 +24,7 @@ namespace Group1CompStore.Controllers
         }
 
         // GET: api/Employees
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
@@ -30,6 +32,7 @@ namespace Group1CompStore.Controllers
         }
 
         // GET: api/Employees/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
@@ -45,6 +48,7 @@ namespace Group1CompStore.Controllers
 
         // PUT: api/Employees/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEmployee(int id, Employee employee)
         {
@@ -76,6 +80,7 @@ namespace Group1CompStore.Controllers
 
         // POST: api/Employees
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
         {
@@ -86,6 +91,7 @@ namespace Group1CompStore.Controllers
         }
 
         // DELETE: api/Employees/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Group1CompStore.Data;
 using Group1CompStore.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Group1CompStore.Controllers
 {
@@ -16,13 +17,30 @@ namespace Group1CompStore.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly Group1computerstoreContext _context;
-
-        public OrdersController(Group1computerstoreContext context)
+        private readonly JwtAuthentication jwtAuthentication;
+        public OrdersController(JwtAuthentication jwtAuthentication, Group1computerstoreContext context)
         {
+            this.jwtAuthentication = jwtAuthentication;
             _context = context;
         }
 
+        [AllowAnonymous]
+        [HttpPost("Authorize")]
+        public IActionResult AuthUser([FromBody] User usr)
+        {
+            var token = jwtAuthentication.Authenticate(usr.username, usr.password);
+            if (token == null) return Unauthorized();
+            return Ok(token);
+        }
+        public class User
+        {
+            public string username { get; set; }
+            public string password { get; set; }
+        }
+
         // GET: api/Orders
+
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
@@ -30,6 +48,7 @@ namespace Group1CompStore.Controllers
         }
 
         // GET: api/Orders/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
         {
@@ -45,6 +64,7 @@ namespace Group1CompStore.Controllers
 
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOrder(int id, Order order)
         {
@@ -76,6 +96,7 @@ namespace Group1CompStore.Controllers
 
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
@@ -86,6 +107,7 @@ namespace Group1CompStore.Controllers
         }
 
         // DELETE: api/Orders/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder(int id)
         {

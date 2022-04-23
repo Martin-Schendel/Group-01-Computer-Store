@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Group1CompStore.Data;
 using Group1CompStore.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Group1CompStore.Controllers
 {
@@ -23,6 +24,7 @@ namespace Group1CompStore.Controllers
         }
 
         // GET: api/OrderPayments
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderPayment>>> GetOrderPayments()
         {
@@ -30,6 +32,7 @@ namespace Group1CompStore.Controllers
         }
 
         // GET: api/OrderPayments/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<OrderPayment>> GetOrderPayment(int id)
         {
@@ -45,6 +48,7 @@ namespace Group1CompStore.Controllers
 
         // PUT: api/OrderPayments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOrderPayment(int id, OrderPayment orderPayment)
         {
@@ -76,6 +80,7 @@ namespace Group1CompStore.Controllers
 
         // POST: api/OrderPayments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<OrderPayment>> PostOrderPayment(OrderPayment orderPayment)
         {
@@ -86,6 +91,7 @@ namespace Group1CompStore.Controllers
         }
 
         // DELETE: api/OrderPayments/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrderPayment(int id)
         {

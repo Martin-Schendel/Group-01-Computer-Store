@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Group1CompStore.Data;
 using Group1CompStore.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Group1CompStore.Controllers
 {
@@ -23,6 +24,7 @@ namespace Group1CompStore.Controllers
         }
 
         // GET: api/Products
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
@@ -30,6 +32,7 @@ namespace Group1CompStore.Controllers
         }
 
         // GET: api/Products/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
@@ -45,6 +48,7 @@ namespace Group1CompStore.Controllers
 
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
         {
@@ -76,6 +80,7 @@ namespace Group1CompStore.Controllers
 
         // POST: api/Products
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
@@ -86,6 +91,7 @@ namespace Group1CompStore.Controllers
         }
 
         // DELETE: api/Products/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
