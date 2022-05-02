@@ -5,7 +5,12 @@
       "ProjectGuid": "65b540f9-25bc-454f-a8f5-ab915e46f190",
       "DisplayName": "Group1CompStore",
       "ColorIndex": 0
+    },
+    "f2e69e45-e011-48a2-b82e-68a6b2f7ac89": {
+      "ProjectGuid": "f2e69e45-e011-48a2-b82e-68a6b2f7ac89",
+      "DisplayName": "Group1CompStoreTests",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
